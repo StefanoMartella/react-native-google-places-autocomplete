@@ -133,6 +133,13 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
   const inputRef = useRef();
 
   useEffect(() => {
+    debounceData(stateText);
+    if (!listViewDisplayed) {
+      setListViewDisplayed(true);
+    }
+  }, [stateText]);
+
+  useEffect(() => {
     // This will load the default value's search results after the view has
     // been rendered
     _handleChangeText(stateText);
